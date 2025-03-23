@@ -19,8 +19,8 @@ export default function Home() {
     <Jumbotron />
     <SoundSection />
     <DisplaySection /> 
-    {/* <WebgiViewer /> */}
-    {/* <ScrollGsapAnimation /> */}
+    {/* <WebgiViewer />
+    <ScrollGsapAnimation /> */}
   </div>
   );
 }
