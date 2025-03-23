@@ -32,7 +32,7 @@ const Model = () => {
         onComplete: () => {
           setInitialRotationComplete(true);
           gsap.to(meshRef.current.rotation, {
-            duration: 1, // Add a smooth transition
+            duration: 3, // Add a smooth transition
             x: 0,
             ease: "power3.out",
           });
