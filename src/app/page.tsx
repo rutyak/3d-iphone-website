@@ -3,6 +3,7 @@
 import DisplaySection from "@/components/DisplaySection";
 import Jumbotron from "@/components/Jumbotron";
 import Navbar from "@/components/Navbar";
+import ScrollGsapAnimation from "@/components/ScrollGsapAnimation";
 import SoundSection from "@/components/SoundSection";
 import dynamic from "next/dynamic";
 
@@ -17,8 +18,9 @@ export default function Home() {
     <Navbar/>
     <Jumbotron />
     <SoundSection />
-    <DisplaySection />
-    <WebgiViewer />
+    <DisplaySection /> 
+    {/* <WebgiViewer /> */}
+    {/* <ScrollGsapAnimation /> */}
   </div>
   );
 }

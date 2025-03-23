@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import HoldingIphone from "../assets/images/iphone-hand.png"
+import NewModel from "./Model";
 const Jumbotron = () => {
 
     const handleLearnMore = () => {
@@ -28,7 +29,8 @@ const Jumbotron = () => {
                  <a className="link" onClick={handleLearnMore}>Learn more</a>
                </li>
             </ul>
-            <Image className="iphone-img" src={HoldingIphone} alt="iphone-hand"/>
+            {/* <Image className="iphone-img" src={HoldingIphone} alt="iphone-hand"/> */}
+            <NewModel />
         </div>
     )
 }

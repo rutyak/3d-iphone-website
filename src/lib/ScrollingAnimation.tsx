@@ -7,9 +7,9 @@ const scrollingAnimation = ({ position, target, onUpdate }: any) => {
     const tl = gsap.timeline();
 
     tl.to(position, {
-        x: -3.38,
-        y: -10.74,
-        z: -5.93,
+        x: 1.69,
+        y: -0.20,
+        z: -9.85,
         scrollTrigger: {
             trigger: ".sound-section",
             start: "top bottom",
@@ -17,26 +17,60 @@ const scrollingAnimation = ({ position, target, onUpdate }: any) => {
             scrub: 2,
             immediateRender: false,
         },
-        onUpdate: () => {
-            console.log("Position updated:", position);
-            onUpdate();
-        },
+        onUpdate
     }).to(target, {
-        x: 1.52,
-        y: 0.77,
+        x: -3.51,
+        y: -3.99,
+        z: -8.47,
+        scrollTrigger: {
+            trigger: ".sound-section",
+            start: "top bottom",
+            end: "top top",
+            scrub: 2,
+            immediateRender: false,
+        },
+    }).to('.jumbotron-section', {
+        opacity: 0,
+        scrollTrigger: {
+            trigger: ".sound-section",
+            start: "top bottom",
+            end: "top top",
+            scrub: 2,
+            immediateRender: false,
+        },
+    }).to('.sound-section-content', {
+        opacity: 1,
+        scrollTrigger: {
+            trigger: ".sound-section",
+            start: "top bottom",
+            end: "top top",
+            scrub: 2,
+            immediateRender: false,
+        },
+    }).to(position, {
+        x: -3.51,
+        y: -3.99,
+        z: -8.47,
+        scrollTrigger: {
+            trigger: ".display-section",
+            start: "top bottom",
+            end: "top top",
+            scrub: 2,
+            immediateRender: false,
+        },
+        onUpdate
+    }).to(target, {
+        x: 5.92,
+        y: 4.28,
         z: -1.08,
         scrollTrigger: {
-            trigger: ".sound-section",
+            trigger: ".display-section",
             start: "top bottom",
             end: "top top",
             scrub: 2,
             immediateRender: false,
         },
-        onUpdate: () => {
-            console.log("Target updated:", target);
-            onUpdate();
-        },
-    });
+    })
 };
 
 export default scrollingAnimation;
