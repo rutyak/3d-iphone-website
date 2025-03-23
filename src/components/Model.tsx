@@ -54,7 +54,7 @@ const Model = () => {
         }
     });
 
-    return <primitive ref={meshRef} object={scene} scale={1.5} />;
+    return <primitive ref={meshRef} object={scene} scale={1.3}/>;
 };
 
 const Loading = () => (
@@ -66,10 +66,10 @@ const Loading = () => (
 export default function NewModel() {
     return (
         <div className="h-screen w-screen flex items-center justify-center bg-black">
-            <Canvas camera={{ position: [0, 1, 5], fov: 50 }} shadows>
+            <Canvas camera={{ position: [0, 1,5], fov: 50 }} shadows>
                 <Suspense fallback={<Loading />}>
                     <ambientLight intensity={0.3} />
-                    <directionalLight position={[5, 5, 5]} intensity={0.8} castShadow />
+                    <directionalLight position={[3, 3, 3]} intensity={0.8} castShadow />
                     <pointLight position={[-5, 5, 0]} intensity={0.5} />
                     <Model />
                     <OrbitControls enableZoom={false} enableDamping={true} dampingFactor={0.1} autoRotate={true} />
