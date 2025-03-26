@@ -30,7 +30,7 @@ const Jumbotron = () => {
                </li>
             </ul>
             {/* <Image className="iphone-img" src={HoldingIphone} alt="iphone-hand"/> */}
-            <NewModel />
+            {/* <NewModel /> */}
         </div>
     )
 }

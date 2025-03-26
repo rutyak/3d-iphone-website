@@ -8,19 +8,11 @@ const Model = () => {
   const { scene } = useGLTF("/scene.glb");
   const meshRef = useRef<THREE.Object3D>(null);
   const scrollY = useRef(0);
+  const modelScale = useRef(1.3); 
 
   const velocity = useRef({ x: 2, y: 2 });
   const targetVelocity = useRef({ x: 0, y: 0.2 });
   const [initialRotationComplete, setInitialRotationComplete] = useState(false);
-
-  const handleScroll = (e: WheelEvent) => {
-    scrollY.current += e.deltaY * 0.001;
-  };
-
-  useEffect(() => {
-    window.addEventListener("wheel", handleScroll);
-    return () => window.removeEventListener("wheel", handleScroll);
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -53,6 +45,17 @@ const Model = () => {
       }
 
       meshRef.current.position.y = Math.sin(clock.getElapsedTime() * 2) * 0.2;
+
+      // Calculate scale based on scroll position
+      const scrollPercentage = window.scrollY / window.innerHeight; // Assuming scaling happens within the first screen height
+      const minScale = 0.5;
+      const maxScale = 1.3;
+      const scaleDifference = maxScale - minScale;
+
+      // Scale down as scrollPercentage increases, clamp between min and max
+      const newScale = Math.max(minScale, maxScale - scrollPercentage * scaleDifference);
+      modelScale.current = newScale;
+      meshRef.current.scale.set(newScale, newScale, newScale);
     }
   });
 
@@ -66,7 +69,7 @@ const Model = () => {
     }
   });
 
-  return <primitive ref={meshRef} object={scene} scale={1.3} />;
+  return <primitive ref={meshRef} object={scene} />;
 };
 
 const Loading = () => (
@@ -77,26 +80,26 @@ const Loading = () => (
 
 export default function NewModel() {
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-black">
-      <Canvas camera={{ position: [0, 1, 5], fov: 50 }} shadows>
-        <Suspense fallback={<Loading />}>
-          <ambientLight intensity={0.3} />
-          <directionalLight position={[3, 3, 3]} intensity={0.8} castShadow />
-          <pointLight position={[-5, 5, 0]} intensity={0.5} />
-          <Model />
-          <OrbitControls
-            enableZoom={false}
-            enableDamping={true}
-            dampingFactor={0.1}
-            autoRotate={true}
-          />
-          <Environment preset="night" />
-          <mesh receiveShadow position={[0, -1.5, 0]}>
-            <planeGeometry args={[10, 10]} />
-            <shadowMaterial opacity={0.3} />
-          </mesh>
-        </Suspense>
-      </Canvas>
-    </div>
+    <div className="sticky top-0">
+        <Canvas camera={{ position: [0, 1, 5], fov: 50 }}>
+          <Suspense fallback={<Loading />}>
+            <ambientLight intensity={0.3} />
+            <directionalLight position={[3, 3, 3]} intensity={0.8} castShadow />
+            <pointLight position={[-5, 5, 0]} intensity={0.5} />
+            <Model />
+            <OrbitControls
+              enableZoom={false}
+              enableDamping={true}
+              dampingFactor={0.1}
+              autoRotate={true}
+            />
+            <Environment preset="night" />
+            <mesh receiveShadow position={[0, -1.5, 0]}>
+              <planeGeometry args={[10, 10]} />
+              <shadowMaterial opacity={0.3} />
+            </mesh>
+          </Suspense>
+        </Canvas>
+      </div>
   );
 }
