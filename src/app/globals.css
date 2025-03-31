@@ -226,7 +226,6 @@ nav .link-styled {
   align-items: center;
   flex-direction: column;
   padding-top: 60px;
-  z-index: 1;
   /* min-height: 831px; */
 }
 
@@ -244,7 +243,7 @@ nav .link-styled {
 .jumbotron-section .text {
   display: inline-block;
   color: transparent;
-  background-image: linear-gradient(180deg, #ffb6ff, #b344ff);
+  background-image: linear-gradient(180deg, #ffb6ff, #b344ff); 
   -webkit-background-clip: text;
   background-clip: text;
   padding-top: 0.5px;

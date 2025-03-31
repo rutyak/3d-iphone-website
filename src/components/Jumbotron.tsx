@@ -3,6 +3,7 @@
 import Image from "next/image";
 import HoldingIphone from "../assets/images/iphone-hand.png"
 import NewModel from "./Model";
+import CloudBackground from "./VantaBackground";
 const Jumbotron = () => {
 
     const handleLearnMore = () => {
@@ -15,7 +16,7 @@ const Jumbotron = () => {
     }   
 
     return (
-        <div className="jumbotron-section wrapper"> 
+        <div className="h-[400px] relative"> 
             <h2 className="title">New</h2>
             <p className="text">Big and bigger.</p>
             <span className="description">
@@ -31,6 +32,9 @@ const Jumbotron = () => {
             </ul>
             {/* <Image className="iphone-img" src={HoldingIphone} alt="iphone-hand"/> */}
             {/* <NewModel /> */}
+            <div className="h-full absolute ">
+              <CloudBackground />
+            </div>
         </div>
     )
 }

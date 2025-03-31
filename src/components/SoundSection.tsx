@@ -18,7 +18,7 @@ function SoundSection(){
                         <a className="button">Learn more</a>
                     </li>
                   </ul>
-               </div>
+                </div>
             </div>
         </div>
     )
